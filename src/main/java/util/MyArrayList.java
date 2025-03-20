@@ -9,7 +9,6 @@ public class MyArrayList<T> implements MyList<T> {
 
     public MyArrayList() {
         this.elements = new Object[INIT_SIZE];
-        this.size = 0;
     }
 
     @Override
@@ -64,7 +63,7 @@ public class MyArrayList<T> implements MyList<T> {
 
     @Override
     public boolean isEmpty() {
-        return size() == 0;
+        return size == 0;
     }
 
     @Override

@@ -4,7 +4,7 @@ import util.MyList;
 
 public class Application {
     public static void main(String[] args) {
-        MyList<Integer> linkedList = new MyArrayList<>();
+        MyList<Integer> linkedList = new MyLinkedList<>();
 
         linkedList.add(10);
         linkedList.add(1);

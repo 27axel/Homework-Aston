@@ -49,9 +49,7 @@ public class MyLinkedList<T> implements MyList<T> {
 
     @Override
     public T remove(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
-        }
+        checkIndex(index);
 
         Node<T> current = first;
         if (index == 0) {
@@ -73,17 +71,17 @@ public class MyLinkedList<T> implements MyList<T> {
                 current.prev.next = current.next;
             }
         }
+        size--;
         return current.element;
     }
 
     @Override
     public T get(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
-        }
+        checkIndex(index);
 
-        Node<T> current = (index < size / 2) ? first : last;
-        if (index < size / 2) {
+        boolean isInFirstHalf = index < size / 2;
+        Node<T> current = isInFirstHalf ? first : last;
+        if (isInFirstHalf) {
             for (int i = 0; i < index; i++) {
                 current = current.next;
             }
@@ -98,9 +96,7 @@ public class MyLinkedList<T> implements MyList<T> {
 
     @Override
     public T set(int index, T t) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
-        }
+        checkIndex(index);
 
         Node<T> current = first;
         if (index == 0) {
@@ -168,5 +164,11 @@ public class MyLinkedList<T> implements MyList<T> {
         array[i + 1] = array[high];
         array[high] = temp;
         return i + 1;
+    }
+
+    private void checkIndex(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
     }
 }
